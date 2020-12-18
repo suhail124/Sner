@@ -1,13 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Sner</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <title>Login / Singup form</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <app-root></app-root>
+<div class="container"><br>
+  <h1 class="text-success text-center">Complete form validation in javascript</h1>
+  <div class="col-lg-8 m-auto d-block">
+    <form action="#" onsubmit="return validation()" class="bg-light"><br>
+
+
+      <div class="form-group">
+        <label>username:</label>
+        <input type="text" name="user" class="form-control" id="user" autocomplete="off">
+        <span id="username" class="text-danger font-weight-bold"></span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Password:</label>
+        <input type="text" name="pass" class="form-control" id="pass" autocomplete="off">
+        <span id="Password" class="text-danger font-weight-bold"></span>
+      </div>
+
+
+      <div class="form-group">
+        <input type="password" name="conpass" class="form-control" id="conpass" autocomplete="off">
+        <span id="confpass" class="text-danger font-weight-bold"></span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Mobile no:</label>
+        <input type="text" name="num" class="form-control" id="num" autocomplete="off">
+        <span id="mobile" class="text-danger font-weight-bold"></span>
+      </div>
+
+
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="text" name="email" class="form-control" id="email" autocomplete="off">
+        <span id="mail" class="text-danger font-weight-bold"></span>
+      </div>
+
+
+      <input type="submit" name="submit" placeholder="submit" class="btn btn-success" value="submit">
+    </form>
+
+  </div>
+</div>
+
+<script type="text/javascript">
+
+
+  function validation(){
+
+    var user = document.getElementById('user').value;
+    var pass = document.getElementById('pass').value;
+    var conpass = document.getElementById('conpass').value;
+    var num = document.getElementById('num').value;
+    var email = document.getElementById('email').value;
+
+    //USERNAME FIELD
+
+    if(user == "") {
+      document.getElementById('username').innerHTML = "**Please Enter the username";
+      return false;
+    }
+    if ((user.length <= 4) || (user.length > 20)) {
+      document.getElementById('username').innerHTML = "**The username length should be more than 4 charecters and less than 20 charecters";
+      return false;
+    }
+    if(!isNaN(user)){
+      document.getElementById('username').innerHTML = "**Only charecters are allowed";
+      return false;
+    }
+
+    //PASSWORD FIELD//
+
+    if(pass == "") {
+      document.getElementById('Password').innerHTML = "**Please Enter the Password";
+      return false;
+    }
+    if ((pass.length <= 4) || (pass.length > 20)) {
+      document.getElementById('password').innerHTML = "**The password length should be more than 4 charecters and less than 20 charecters";
+      return false;
+    }
+
+    //CONFIRM-PASSWORD FIELD//
+
+    if(conpass == "") {
+      document.getElementById('confpass').innerHTML = "**Please Confirm the Password";
+      return false;
+    }
+
+
+    //PASSWORD MATCHING FIELD//
+
+    if(pass != conpass) {
+      document.getElementById('confpass').innerHTML = "**please re-enter the password the paswords arent matching";
+      return false;
+    }
+
+    //MOBILE NUMBER FIELD//
+
+    if(num == "") {
+      document.getElementById('mobile').innerHTML = "**Please Enter the mobile number";
+      return false;
+    }
+    if (isNaN(num)) {
+      document.getElementById('mobile').innerHTML = "**only numbers are accepted";
+      return false;
+    }
+    if (num.length!=10) {
+      document.getElementById('mobile').innerHTML = "**the numbers entered should be of 10 digits";
+      return false;
+    }
+
+    //EMAIL-ID FIELD//
+
+    if(email == "") {
+      document.getElementById('mail').innerHTML = "**Please Enter the email id";
+      return false;
+    }
+    if(email.indexOf('@') <= 0){
+      document.getElementById('mail').innerHTML = "**Invalid @ position";
+      return false;
+    }
+    if((email.charAT() - 4 != '.') && (email.charAT() - 3 != '.')){
+      document.getElementById('mail').innerHTML = "**Invalid . position";
+      return false;
+    }
+  }
+</script>
+
 </body>
 </html>
